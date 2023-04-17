@@ -1,0 +1,100 @@
+
+.tasks-list .ant-card-head {
+    min-height: 40px;
+}
+
+.tasks-list .ant-card-head .ant-card-head-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tasks-list .ant-card-head-title .task-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tasks-list .ant-card-head .ant-card-head-title button {
+    font-size: 18px;
+    background-color: var(--color-none);
+    border: none;
+    color: var(--ui-colors-neutral8);
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.tasks-list .ant-card-head .ant-card-head-title button:hover {
+    color: var(--ui-colors-info8);
+}
+
+.tasks-list .ant-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 24px;
+    row-gap: 5px;
+}
+
+.tasks-list .ant-card-body .task-info-text {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.time-record {
+    display: flex;
+    column-gap: 20px;
+}
+
+.time-record h6 {
+    color: var(--ui-colors-neutral9);
+}
+
+.tasks-setting {
+    width: 100%;
+    display: flex;
+    column-gap: 10px;
+    justify-content: flex-end;
+}
+
+.tasks-setting button {
+    font-size: 20px;
+    background-color: var(--color-none);
+    border: none;
+    color: var(--ui-colors-neutral8);
+    cursor: pointer;
+    display: flex;
+}
+
+.tasks-setting button:disabled {
+    cursor: not-allowed;
+}
+
+.tasks-setting .btn-log:hover {
+    color: var(--ui-colors-warning8);
+}
+
+.tasks-setting .btn-work:hover {
+    color: var(--ui-colors-success8);
+}
+
+.tasks-setting .btn-export:hover {
+    color: var(--ui-colors-info8);
+}
+
+.tasks-setting .btn-delete:hover {
+    color: var(--ui-colors-danger8);
+}
+
+.tasks-setting .work button {
+    color: var(--ui-colors-success8)
+}
+
+.tasks-setting .stop .work-icon {
+    display: none;
+}
+
+.tasks-setting .work .stop-icon{
+    display: none;
+}

@@ -1,0 +1,47 @@
+.el-header {
+    height: 100%;
+    background-color: var(--c-green);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.el-header .menu-logo {
+    display: flex;
+    column-gap: 10px;
+}
+
+.el-header .show-menu {
+    display: none;
+    background-color: var(--color-none);
+    border: none;
+    cursor: pointer;
+}
+
+.el-header ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.el-header li {
+    list-style: none;
+    margin: 0 10px;
+    display: flex;
+}
+
+.el-header a {
+    font-size: 16px;
+    color: var(--color-text);
+    text-decoration: none;
+    display: flex;
+}
+
+@media screen and (max-width: 840px) {
+    .el-header .show-menu {
+        display: inline;
+    }
+}

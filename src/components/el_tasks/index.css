@@ -1,0 +1,26 @@
+.tasks-title {
+    font-size: 12px;
+}
+
+.tasks-title .icon {
+    margin-right: 10px;
+}
+
+.tasks-operate {
+    display: flex;
+}
+
+.tasks-info {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    row-gap: 10px;
+    column-gap: 10px;
+    overflow: auto;
+    flex-flow: wrap;
+}
+
+@media screen and (max-width: 840px) {
+
+}
