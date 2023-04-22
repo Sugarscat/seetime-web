@@ -1,7 +1,7 @@
 import {BarsOutlined, PlusOutlined} from "@ant-design/icons";
-import {Button} from "antd";
-import TaskCard from "../elements/task-card";
+import {Card} from '../elements/Card'
 import './index.css'
+import {TaskCard} from "../elements/TaskCard";
 
 
 function ElTasks() {
@@ -14,14 +14,11 @@ function ElTasks() {
                 </h2>
             </div>
             <div className={"tasks-operate"}>
-                <Button type="primary">
-                    <PlusOutlined />
-                    添加
-                </Button>
+               <button><PlusOutlined/></button>
             </div>
             <div className={"tasks-info"}>
-                <TaskCard data={{id: "1"}}/>
-                <TaskCard data={{id: "1"}}/>
+                <TaskCard id={1}/>
+                <TaskCard id={2}/>
             </div>
         </>
     )

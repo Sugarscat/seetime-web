@@ -1,0 +1,72 @@
+.sugar-drawer-background {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, .3);
+    animation: load-background 0.35s ease-in;
+}
+
+.sugar-drawer-hidden {
+    animation: load-background-off 0.35s forwards;
+}
+
+.sugar-drawer {
+    height: 100%;
+    width: 300px;
+    animation: open-drawer 0.35s ease-in;
+}
+
+.sugar-drawer-hidden .sugar-drawer {
+    animation: close-drawer 0.35s ease-in;
+    transform: translate(-100%);
+}
+
+.sugar-drawer-body {
+    padding: 20px;
+}
+
+@keyframes load-background {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, .3);
+    }
+}
+
+@keyframes load-background-off {
+    0% {
+        background-color: rgba(0, 0, 0, .3);
+    }
+
+    99% {
+        transform: translate(0%);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0);
+        transform: translate(-100%);
+    }
+}
+
+@keyframes open-drawer {
+    0% {
+        transform: translate(-100%);
+    }
+
+    100% {
+        transform: translate(0%);
+    }
+}
+
+@keyframes close-drawer {
+    0% {
+        transform: translate(0%);
+    }
+
+    100% {
+        transform: translate(-100%);
+    }
+}

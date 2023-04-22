@@ -1,0 +1,71 @@
+.sugar-message-wrap{
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  z-index: 1000;
+}
+
+.sugar-message {
+  height: 34px;
+  padding: 0 10px;
+  font-size: 13px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: var(--shadow2);
+  column-gap: 10px;
+}
+
+.sugar-message .icon {
+  font-size: 15px;
+}
+
+.sugar-message.info .icon-warning,
+.sugar-message.info .icon-error,
+.sugar-message.info .icon-success {
+  display: none;
+}
+
+.sugar-message.info {
+  background-color: var(--ui-colors-info4);
+  border: 1px solid var(--ui-colors-info6);
+  color: var(--ui-colors-info9);
+}
+
+.sugar-message.error .icon-warning,
+.sugar-message.error .icon-info,
+.sugar-message.error .icon-success {
+  display: none;
+}
+
+.sugar-message.error {
+  background-color: var(--ui-colors-danger4);
+  border: 1px solid var(--ui-colors-danger6);
+  color: var(--ui-colors-danger9);
+}
+
+.sugar-message.warning .icon-info,
+.sugar-message.warning .icon-error,
+.sugar-message.warning .icon-success {
+  display: none;
+}
+
+.sugar-message.warning {
+  background-color: var(--ui-colors-warning4);
+  border: 1px solid var(--ui-colors-warning6);
+  color: var(--ui-colors-warning9);
+}
+
+.sugar-message.success .icon-warning,
+.sugar-message.success .icon-info,
+.sugar-message.success .icon-error {
+  display: none;
+}
+
+.sugar-message.success {
+  background-color: var(--ui-colors-success4);
+  border: 1px solid var(--ui-colors-success6);
+  color: var(--ui-colors-success9);
+}

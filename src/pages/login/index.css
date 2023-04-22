@@ -43,7 +43,7 @@
 .login-remember-tip {
     height: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -99,6 +99,10 @@
 .login-btn-submit {
     background-color: var(--ui-colors-primary6);
     color: var(--ui-colors-primary9);
+}
+
+.login-btn-submit:disabled {
+    cursor: not-allowed;
 }
 
 .login-btn-submit:hover {

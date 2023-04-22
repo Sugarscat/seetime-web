@@ -18,7 +18,7 @@ export default {
             {icon: 'github', link: 'https://github.com/Sugarscat/hi-automation'}
         ],
         // footer: {
-        //     message: 'GNU GENERAL PUBLIC LICENSE V3 Licensed',
+        //     mymessage: 'GNU GENERAL PUBLIC LICENSE V3 Licensed',
         //     copyright: '<a href="https://beian.miit.gov.cn/" target="_blank"></a>'
         // }
     },

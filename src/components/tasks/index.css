@@ -11,7 +11,6 @@
 }
 
 .tasks-info {
-    width: 100%;
     display: flex;
     flex-flow: wrap;
     flex-direction: row;
@@ -19,6 +18,7 @@
     column-gap: 10px;
     overflow: auto;
     flex-flow: wrap;
+    padding: 10px;
 }
 
 @media screen and (max-width: 840px) {

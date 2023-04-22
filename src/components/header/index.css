@@ -14,10 +14,9 @@
 }
 
 .el-header .show-menu {
+    margin: 0;
+    padding: 0;
     display: none;
-    background-color: var(--color-none);
-    border: none;
-    cursor: pointer;
 }
 
 .el-header ul {
@@ -42,6 +41,6 @@
 
 @media screen and (max-width: 840px) {
     .el-header .show-menu {
-        display: inline;
+        display: flex;
     }
 }

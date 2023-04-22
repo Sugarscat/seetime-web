@@ -1,7 +1,7 @@
 function init(id: any){
     const task = {
-        title: "任务sadddddddddddddddddddddddddddddd",
-        info: "简介：saddddddddddddsaddddddddddddddddddddddd",
+        title: "任务",
+        info: "简介",
         last: "2023-02-03",
         next: "2023-54-00"
     }

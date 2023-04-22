@@ -1,0 +1,35 @@
+.task-header {
+    height: 22px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    height: 100%;
+    font-size: 11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-title h2 {
+    max-width: 200px;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.task-header button {
+    font-size: 18px;
+    background-color: var(--color-none);
+    border: none;
+    color: var(--ui-colors-neutral8);
+    cursor: pointer;
+}
+
+.task-header button:hover {
+    color: var(--ui-colors-info8);
+}
