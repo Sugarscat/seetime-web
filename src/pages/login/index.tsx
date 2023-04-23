@@ -10,21 +10,21 @@ function Login() {
     const [password, setPassword] = useState('')
     const [isLoading, setLoading] = useState(false)
     const navigate = useNavigate();
-    const connectUrl = "http://localhost:3000/api/login?name="
+    const connectUrl = "http://localhost:3000/api/login?"
 
     const clearValue = ()=> {
         setUsername('')
         setPassword('')
     }
 
-    const cookieSave = (id: number, token: string)=> {
+    const cookieSave = (id: number, name: string, token: string)=> {
         cookie.save("user_id", id, { path: '/' })
+        cookie.save("user_name", name, { path: '/' })
         cookie.save("user_token", token, { path: '/' })
-        navigate('/')
     }
 
     const connect = async () => {
-        let url = connectUrl + username + "&password=" + password
+        let url = connectUrl + "name=" +username + "&password=" + password
         const res = await fetch(url, {
             method: "POST",
             headers: {"Content-Type": "application/json;charset=utf-8"},
@@ -40,16 +40,21 @@ function Login() {
             }
         )
 
+        if (isNaN(res.success)) {
+            return
+        }
+
         if (!res.success) {
-            if (res.code === 404) {
-                warning("用户名或密码错误")
+            if (res.code === 429) {
+                warning("验证错误过多，请稍后重试")
             }
             else {
-                warning("过多请求，请稍后重试")
+                warning("用户名或密码错误")
             }
         } else {
             success()
-            cookieSave(res.id, res.token)
+            cookieSave(res.id, username, res.token)
+            navigate('/')
         }
         setLoading(false)
     }
@@ -86,10 +91,12 @@ function Login() {
             <main className={"login-main"}>
                 <input type="text" value={username}
                        onChange={(e)=>setUsername(e.target.value)}
-                       placeholder={"输入您的用户名"}/>
+                       placeholder={"输入您的用户名"}
+                />
                 <input type="password" value={password}
                        onChange={(e)=>setPassword(e.target.value)}
-                       placeholder={"输入您的密码"}/>
+                       placeholder={"输入您的密码"}
+                />
                 <div className="login-remember-tip">
                     <a className="" target="_blank" href="/">忘记密码？</a>
                 </div>

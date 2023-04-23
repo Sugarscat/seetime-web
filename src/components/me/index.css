@@ -1,0 +1,146 @@
+.me-title {
+    font-size: 12px;
+}
+
+.me-title .icon {
+    margin-right: 10px;
+}
+
+.me-login-info {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--ui-colors-success6);
+    border: 1px solid var(--ui-colors-success7);
+    color: var(--ui-colors-success10);
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 20px;
+}
+
+.me-operate {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.me-operate input {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    min-height: 40px;
+    border-radius: 10px;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    border: 2px solid var(--color-none);
+    background-color: var(--ui-colors-neutral3);
+}
+
+.me-operate input:hover {
+    background-color: var(--ui-colors-neutral4);
+}
+
+.me-operate input:focus {
+    outline: none;
+    border: 2px solid var(--c-green);
+}
+
+.me-name,
+.me-pwd {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    row-gap: 10px;
+    padding-right: 1px;
+}
+
+.me-name-text,
+.me-pwd-text {
+    display: flex;
+}
+
+.me-tip {
+    display: flex;
+    font-size: 14px;
+    color: var(--ui-colors-neutral10);
+}
+
+.me-btn {
+    display: flex;
+    column-gap: 20px;
+}
+
+.me-btn button {
+    height: 40px;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.btn-save{
+    background-color: var(--ui-colors-primary6);
+    color: var(--ui-colors-primary9);
+}
+
+.btn-save:disabled {
+    cursor: not-allowed;
+}
+
+.btn-save:hover {
+    background-color: var(--ui-colors-primary7);
+}
+
+.btn-sign-out {
+    background-color: var(--ui-colors-info6);
+    color: var(--ui-colors-info9);
+}
+
+.btn-sign-out:hover {
+    background-color: var(--ui-colors-info7);
+}
+
+.me-info {
+    display: flex;
+    column-gap: 10px;
+    row-gap: 10px;
+    flex-flow: wrap;
+
+}
+
+.me-info span {
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.me-info .true {
+    background-color: var(--ui-colors-success5);
+    color: var(--ui-colors-success9);
+}
+
+.me-info .false {
+    background-color: var(--ui-colors-danger5);
+    color: var(--ui-colors-danger9);
+}
+
+@media screen and (max-width: 600px) {
+    .me-login-info {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .me-operate {
+        width: 100%;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .me-name,
+    .me-pwd {
+        width: 100%;
+    }
+}

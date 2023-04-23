@@ -8,34 +8,8 @@ import {Loading} from "../../components/elements/Loading";
 
 
 function Home() {
-    let width = window.innerWidth
-    const [mainWidth, updateMainW] = useState(width)
-    const [winHeight, updateWinHeight] = useState(window.innerHeight)
-    const [headerH, setHeader] = useState(40)
-    const [menuWidth, setMenuW] = useState(300)
     const [open, setOpen] = useState(false);
 
-    const updateMain = ()=>{
-        width = window.innerWidth
-        if (width < 370){
-            return
-        } else if (width >= 370 && width <= 840) {
-            updateMainW(width)
-        }
-        else {
-            updateMainW(width - menuWidth)
-        }
-    }
-
-    window.onload =  updateMain
-    window.addEventListener('resize', function (e) {
-        updateMain()
-    }, false);
-    window.addEventListener('resize', function (e) {
-        if (window.innerHeight > 512){
-            updateWinHeight(window.innerHeight)
-        }
-    }, false);
 
     const showDrawer = () => {
         setOpen(!open);
@@ -43,19 +17,19 @@ function Home() {
 
     return(
         <>
-            <header className={"home-header"} style={{height:headerH}}>
+            <header className={"home-header"}>
                 <ElHeader  fun={showDrawer} open={open}/>
             </header>
-            <main className={"home-main"} style={{height:winHeight-headerH-0.1}}>
+            <main className={"home-main"}>
                 <div className={"menu"}>
-                    <div className={"wide-screen"} style={{width:menuWidth}}>
+                    <div className={"wide-screen"}>
                         <SidebarMenu/>
                     </div>
                     <div className={"narrow-screen"}>
                         <Drawer location={"left"} open={open} label={<SidebarMenu/>} title={""}/>
                     </div>
                 </div>
-                <div className={"fun-app-info"} style={{width: mainWidth}}>
+                <div className={"fun-app-info"}>
                     <Suspense fallback={<Loading/>}>
                         <Outlet/>
                     </Suspense>

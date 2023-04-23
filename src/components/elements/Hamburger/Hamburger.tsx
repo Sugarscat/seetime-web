@@ -7,7 +7,7 @@ export const Hamburger = (props: {
     const open = () => {
         if (!props.open)
             return ""
-        return " menu-show"
+        return " menu-open"
     }
     return(
         <>

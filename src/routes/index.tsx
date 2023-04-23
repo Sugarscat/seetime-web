@@ -2,7 +2,8 @@ import {lazy} from "react";
 import Home from "../pages/home";
 import Login from "../pages/login";
 
-const Tasks = lazy(()=>import( "../components/tasks"))
+const Tasks = lazy(()=>import("../components/tasks"))
+const Me = lazy(()=>import("../components/me"))
 
 const routers = [
     {
@@ -26,19 +27,11 @@ const routers = [
                 element: '',
             },
             {
-                path: 'tasks',
-                element: '',
-            },
-            {
                 path: 'me',
-                element: '',
+                element: <Me/>,
             },
             {
                 path: 'users',
-                element: '',
-            },
-            {
-                path: 'about',
                 element: '',
             },
         ]
