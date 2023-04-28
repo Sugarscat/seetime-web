@@ -76,7 +76,7 @@
     height: 40px;
     width: 80px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 17px;
 }
@@ -116,6 +116,8 @@
     border-radius: 5px;
     font-size: 0.75rem;
     font-weight: 700;
+    background-color: var(--ui-colors-neutral5);
+    color: var(--ui-colors-neutral9);
 }
 
 .me-info .true {

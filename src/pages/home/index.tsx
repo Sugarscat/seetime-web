@@ -6,10 +6,8 @@ import './index.css'
 import {Drawer} from "../../components/elements/Drawer";
 import {Loading} from "../../components/elements/Loading";
 
-
 function Home() {
     const [open, setOpen] = useState(false);
-
 
     const showDrawer = () => {
         setOpen(!open);

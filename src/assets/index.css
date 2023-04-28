@@ -1,0 +1,24 @@
+@keyframes load-background {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, .3);
+    }
+}
+
+@keyframes load-background-off {
+    0% {
+        background-color: rgba(0, 0, 0, .3);
+    }
+
+    99% {
+        transform: translate(0%);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0);
+        transform: translate(-100%);
+    }
+}

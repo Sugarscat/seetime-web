@@ -1,0 +1,84 @@
+.td-name {
+    min-width: 60px;
+}
+
+.user-name {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.td-identity {
+    min-width: 50px;
+}
+
+.user-identity.true {
+    width: 40px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--ui-colors-success5);
+    color: var(--ui-colors-success9);
+}
+
+.user-permissions {
+    display: flex;
+    column-gap: 5px;
+}
+
+.user-permissions div {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.td-permissions {
+    min-width: 65px;
+}
+
+.user-permissions .true {
+    background-color: var(--ui-colors-success9);
+}
+
+.user-permissions .false {
+    background-color: var(--ui-colors-danger9);
+}
+
+.td-operate {
+    min-width: 170px;
+}
+
+.user-btn {
+    display: flex;
+    column-gap: 10px;
+}
+
+.user-btn button {
+    height: 35px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.user-btn .btn-update {
+    background-color: var(--ui-colors-primary6);
+    color: var(--ui-colors-primary9);
+}
+
+.user-delete-confirmation .confirm-btn, /*弹窗确认按钮*/
+.user-btn .btn-delete {
+    background-color: var(--ui-colors-danger6);
+    color: var(--ui-colors-danger9);
+}
+
+.user-delete-confirmation .confirm-btn:hover,
+.user-btn .btn-delete:hover {
+    background-color: var(--ui-colors-danger7);
+}
+
+.user-btn .btn-delete:disabled {
+    cursor: not-allowed;
+}

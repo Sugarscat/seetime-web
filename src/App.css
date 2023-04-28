@@ -9,3 +9,9 @@
   font-size: calc(10px + 2vmin);
   background-color: var(--color-background-soft);
 }
+
+.H_loader {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
