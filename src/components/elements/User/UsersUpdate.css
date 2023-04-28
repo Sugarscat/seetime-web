@@ -51,6 +51,9 @@
     align-items: center;
     column-gap: 5px;
     cursor: pointer;
+    box-shadow: var(--shadow1);
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .users-update-permission input {
