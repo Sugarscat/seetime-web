@@ -41,9 +41,11 @@
 .users-update-permission {
     display: flex;
     column-gap: 10px;
+    row-gap: 10px;
     font-size: 0.9rem;
     line-height: 1.25rem;
     font-weight: 500;
+    flex-flow: wrap;
 }
 
 .users-update-permission label {
