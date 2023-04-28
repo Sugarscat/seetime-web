@@ -3,7 +3,6 @@ import "./UserList.css"
 import {useNavigate} from "react-router-dom";
 import {connect_users} from "../../../connect";
 import {showModal} from "../Modal";
-import cookie from "react-cookies";
 import {$message} from "../Message";
 
 const UserList = (props:{
@@ -45,16 +44,6 @@ const UserList = (props:{
                 $message.warning("不可修改根管理员信息")
                 return
             }
-            // 通过 Cookie 传值
-            cookie.save(
-                "update_data",
-                {
-                    name: props.name,
-                    identity: props.identity,
-                    permissions: props.permissions
-                },
-                {path: "/users"}
-            )
             navigate('/users/update/' + id)
         }
     }

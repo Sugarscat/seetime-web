@@ -1,9 +1,9 @@
 import {ChangeEvent, useEffect, useState} from 'react'
 import {useNavigate, useParams} from "react-router-dom";
 import './UsersUpdate.css'
-import {connect_users_update} from "../../../connect";
+import {connect_user, connect_users_update} from "../../../connect";
 import {$message} from "../Message";
-import cookie from "react-cookies";
+import {Loading} from "../Loading";
 
 const UsersUpdate = () => {
     // 字符串索引签名
@@ -12,13 +12,13 @@ const UsersUpdate = () => {
     }
 
     const { id } = useParams();
-    const update_data = cookie.load("update_data") // 通过 Cookie 传值
     const navigate = useNavigate();
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [identity, setIdentity] = useState(false)
     const [isLoading, setLoading] = useState(false)
+    const [isSaving, setSaving] = useState(false)
     const [checkedState, setCheckedState] = useState<CheckedState>({
         situation: false,
         addTask: false,
@@ -26,8 +26,6 @@ const UsersUpdate = () => {
         deleteTask: false,
         downloadTask: false,
     });
-
-
 
     let permissions = 0
 
@@ -61,8 +59,6 @@ const UsersUpdate = () => {
     }
 
     function updateUsers() {
-        cookie.remove("update_data")
-
         setPrem()
 
         let url = ""
@@ -90,11 +86,10 @@ const UsersUpdate = () => {
         formData.append('identity', String(identity));
         formData.append('permissions', String(permissions))
 
-        connect_users_update(method, setLoading, navigate, url, formData).then()
+        connect_users_update(method, setSaving, navigate, url, formData).then()
     }
 
     function handleCancel()  {
-        cookie.remove("update_data")
         navigate('/users')
     }
 
@@ -104,22 +99,21 @@ const UsersUpdate = () => {
             navigate("/users")
         }
         if (id !== "add"){
-            setUsername(update_data.name)
-            setIdentity(update_data.identity)
-            permissions = update_data.permissions
-            // 将 permissions 转换成对应的 checkedState 的值
-            const newState = {
-                situation: permissions/10000 >= 1,
-                addTask: permissions%10000/1000 >= 1,
-                changeTask: permissions%10000%1000/100 >= 1,
-                deleteTask: permissions%10000%1000%100/10 >= 1,
-                downloadTask: permissions%10000%1000%100%10 >= 1,
-            };
-            setCheckedState({ ...checkedState, ...newState });
+            connect_user(
+                typeof id === "string" ? id : "-1",
+                {
+                    setUsername,
+                    setIdentity,
+                    checkedState,
+                    setCheckedState
+                },
+                setLoading,
+                navigate
+            ).then()
         }
     }, [])
 
-    return (
+    return !isLoading ? (
         <>
             <div className={"users-update"}>
                 <div className={"users-update-title"}>
@@ -194,7 +188,7 @@ const UsersUpdate = () => {
                     <button className={"btn-update-save"}
                             onClick={updateUsers}
                     >
-                        {isLoading ? "保存中···" : "保存"}
+                        {isSaving ? "保存中···" : "保存"}
                     </button>
                     <button className={"btn-update-cancel"}
                             onClick={handleCancel}
@@ -204,7 +198,7 @@ const UsersUpdate = () => {
                 </div>
             </div>
         </>
-    )
+    ) : (<Loading/>)
 }
 
 export default UsersUpdate

@@ -12,6 +12,8 @@ const Users = lazy(()=>import("../components/users"))
 const User = lazy(()=>import("../components/elements/User/User"));
 const UsersUpdate = lazy(()=>import("../components/elements/User/UsersUpdate"))
 
+const mainUrl = "http://localhost:3000"
+
 interface PrivateRouteProps {
     element: ReactElement;
     [key: string]: any;
@@ -23,7 +25,7 @@ const PrivateRoute = ({ element, ...rest }: PrivateRouteProps) => {
 
     useEffect(() => {
         const connect_me = async () => {
-            const connectUrl = "http://localhost:3000/api/me";
+            const connectUrl = mainUrl + "/api/me";
             const response = await fetch(connectUrl, {
                 method: "GET",
                 headers: {

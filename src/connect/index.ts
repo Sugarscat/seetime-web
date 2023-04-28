@@ -1,9 +1,12 @@
 import {$message} from "../components/elements/Message";
 import cookie from "react-cookies";
 
-const loginUrl = "http://localhost:3000/api/login?name="
-const meUrl = "http://localhost:3000/api/me"
-const usersUrl = "http://localhost:3000/api/users"
+const mainUrl = "http://localhost:3000"
+
+const loginUrl = mainUrl + "/api/login?name="
+const meUrl = mainUrl + "/api/me"
+const usersUrl = mainUrl + "/api/users"
+const userUrl = mainUrl + "/api/user?id="
 
 const getMethod = "GET"
 const putMethod = "PUT"
@@ -152,7 +155,7 @@ export const connect_users = async (
     funL(false)
 }
 
-export const  connect_users_update = async (
+export const connect_users_update = async (
     method: string, // 请求方式
     funL: any, // 是否加载
     navigate: any, // 重定向
@@ -196,6 +199,67 @@ export const  connect_users_update = async (
     } else {
         $message.success(response.message)
         navigate('/users')
+    }
+    funL(false)
+}
+
+export const connect_user = async (
+    id: string,
+    fun: {
+        setUsername: any
+        setIdentity: any
+        checkedState: any
+        setCheckedState: any
+    },
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+) => {
+
+    let isCan = true
+    funL(isCan)
+
+    const response = await fetch(userUrl + id, {
+        method: "GET",
+        headers: {
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        $message.warning(response.message)
+        funL(true)
+        if (response.code === 403){
+            navigate('/login')
+        }
+    } else {
+        fun.setUsername(response.data.name)
+        fun.setIdentity(response.data.identity)
+        let permissions = Number(response.data.permissions)
+        // 将 permissions 转换成对应的 checkedState 的值
+        const newState = {
+            situation: permissions/10000 >= 1,
+            addTask: permissions%10000/1000 >= 1,
+            changeTask: permissions%10000%1000/100 >= 1,
+            deleteTask: permissions%10000%1000%100/10 >= 1,
+            downloadTask: permissions%10000%1000%100%10 >= 1,
+        };
+        fun.setCheckedState({ ...fun.checkedState, ...newState });
     }
     funL(false)
 }
