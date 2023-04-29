@@ -1,7 +1,7 @@
 import {ChangeEvent, useEffect, useState} from 'react'
 import {useNavigate, useParams} from "react-router-dom";
 import './UsersUpdate.css'
-import {connect_user, connect_users_update} from "../../../connect";
+import {connect_user, connect_users_update} from "../../connect";
 import {$message} from "../Message";
 import {Loading} from "../Loading";
 
@@ -63,17 +63,17 @@ const UsersUpdate = () => {
 
         let url = ""
         let method = "POST"
-        if (id != "add") {
+        if (id !== "add") {
             url = "?id=" + id
             method = "PUT"
             // 去“空格”，判断是否为空
-            if (username.trim() == '') {
+            if (username.trim() === '') {
                 $message.error('用户名不可为空')
                 setLoading(false)
                 return
             }
         } else {
-            if (username.trim() == '' || password.trim() == '') {
+            if (username.trim() === '' || password.trim() === '') {
                 $message.error('用户名或密码不可为空')
                 setLoading(false)
                 return
@@ -117,7 +117,7 @@ const UsersUpdate = () => {
         <>
             <div className={"users-update"}>
                 <div className={"users-update-title"}>
-                    <h2>{id != "add" ? "编辑" : "添加"}</h2>
+                    <h2>{id !== "add" ? "编辑" : "添加"}</h2>
                 </div>
                 <div className={"users-update-info"}>
                     <input type="text" value={username}
@@ -126,7 +126,7 @@ const UsersUpdate = () => {
                     />
                     <input type="password"
                            onChange={(e)=>setPwd(e)}
-                           placeholder={id == "add" ? "请输入密码" : "如果您不想更改密码，请保持为空"}
+                           placeholder={id === "add" ? "请输入密码" : "如果您不想更改密码，请保持为空"}
                     />
                 </div>
                 <div className={"users-update-permission"}>

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import cookie from 'react-cookies'
-import {$message} from '../../components/elements/Message';
+import {$message} from '../../elements/Message';
 import {connect_login} from "../../connect";
 import './index.css'
 
@@ -18,7 +18,7 @@ function Login() {
 
     const submitInfo = async () => {
         // 去“空格”，判断是否为空
-        if (username.trim() == '' || password.trim() == '') {
+        if (username.trim() === '' || password.trim() === '') {
             $message.error('用户名或密码不可为空')
             setLoading(false)
             return
@@ -27,7 +27,7 @@ function Login() {
     }
 
     function handleKeyPress(event: any) {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
             event.preventDefault()
             event.stopPropagation()
             submitInfo().then()

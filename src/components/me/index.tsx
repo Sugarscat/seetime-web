@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import cookie from "react-cookies";
 import {IdcardOutlined} from "@ant-design/icons";
-import {$message} from "../elements/Message";
+import {$message} from "../../elements/Message";
 import {connect_me} from "../../connect";
 import "./index.css"
 

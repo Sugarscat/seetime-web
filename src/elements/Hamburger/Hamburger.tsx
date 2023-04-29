@@ -1,4 +1,4 @@
-import {createRef, MouseEventHandler, useState} from 'react'
+import {MouseEventHandler} from 'react'
 import './Hamburger.css'
 
 export const Hamburger = (props: {

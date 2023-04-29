@@ -54,7 +54,7 @@ function SidebarMenu() {
                     </NavLink>
                 </li>
                 <li>
-                    <a href="https://seetime.sugarscat.com" target="_blank">
+                    <a href="https://seetime.sugarscat.com" target="_blank"  rel="noreferrer">
                         <h2>
                             <LinkOutlined className={'icon'}/>
                             关于我们

@@ -1,18 +1,18 @@
 import React, {lazy, ReactElement, Suspense, useEffect, useState} from "react";
-import {Navigate, Outlet, useRoutes} from "react-router-dom";
+import {Navigate, useRoutes} from "react-router-dom";
 import cookie from "react-cookies";
-import {$message} from "../components/elements/Message";
-import {Loading} from "../components/elements/Loading";
+import {$message} from "../elements/Message";
+import {Loading} from "../elements/Loading";
 
 const Login = lazy(()=>import("../pages/login"))
 const Home = lazy(()=>import("../pages/home"))
 const Tasks = lazy(() => import("../components/tasks"))
 const Me = lazy(() => import("../components/me"))
 const Users = lazy(()=>import("../components/users"))
-const User = lazy(()=>import("../components/elements/User/User"));
-const UsersUpdate = lazy(()=>import("../components/elements/User/UsersUpdate"))
+const User = lazy(()=>import("../elements/User/User"));
+const UsersUpdate = lazy(()=>import("../elements/User/UsersUpdate"))
 
-const mainUrl = "http://localhost:3000"
+const mainUrl = process.env.REACT_APP_API_URL;
 
 interface PrivateRouteProps {
     element: ReactElement;

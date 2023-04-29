@@ -1,7 +1,7 @@
-import {$message} from "../components/elements/Message";
+import {$message} from "../elements/Message";
 import cookie from "react-cookies";
 
-const mainUrl = "http://localhost:3000"
+const mainUrl = process.env.REACT_APP_API_URL;
 
 const loginUrl = mainUrl + "/api/login?name="
 const meUrl = mainUrl + "/api/me"

@@ -1,7 +1,7 @@
 import {UserOutlined} from "@ant-design/icons";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {connect_users} from "../../../connect";
+import {connect_users} from "../../connect";
 import UserList from "./UserList";
 import cookie from "react-cookies";
 import './User.css'

@@ -1,7 +1,6 @@
 import {BarsOutlined, PlusOutlined} from "@ant-design/icons";
-import {Card} from '../elements/Card'
 import './index.css'
-import {TaskCard} from "../elements/TaskCard";
+import {TaskCard} from "../../elements/TaskCard";
 
 
 function ElTasks() {

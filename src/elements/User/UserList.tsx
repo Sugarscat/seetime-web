@@ -1,7 +1,7 @@
 import {useState} from "react";
 import "./UserList.css"
 import {useNavigate} from "react-router-dom";
-import {connect_users} from "../../../connect";
+import {connect_users} from "../../connect";
 import {showModal} from "../Modal";
 import {$message} from "../Message";
 
@@ -24,7 +24,7 @@ const UserList = (props:{
 
     const deleteUser = (id: number) => {
         return ()=> {
-            if (id == 0) {
+            if (id === 0) {
                 $message.warning("不可删除根管理员")
                 return
             }
@@ -40,7 +40,7 @@ const UserList = (props:{
 
     const updateUser = (id: number) => {
         return ()=>{
-            if (id == 0) {
+            if (id === 0) {
                 $message.warning("不可修改根管理员信息")
                 return
             }

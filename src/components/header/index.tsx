@@ -1,6 +1,6 @@
 import {CompassFilled, GithubOutlined} from "@ant-design/icons";
 import './index.css'
-import {Hamburger} from "../elements/Hamburger";
+import {Hamburger} from "../../elements/Hamburger";
 
 function ElHeader(props: {
     open: boolean;

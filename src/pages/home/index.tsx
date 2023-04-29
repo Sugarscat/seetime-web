@@ -3,8 +3,8 @@ import {Outlet} from "react-router-dom";
 import SidebarMenu from "../../components/sidebar_menu";
 import ElHeader from "../../components/header";
 import './index.css'
-import {Drawer} from "../../components/elements/Drawer";
-import {Loading} from "../../components/elements/Loading";
+import {Drawer} from "../../elements/Drawer";
+import {Loading} from "../../elements/Loading";
 
 function Home() {
     const [open, setOpen] = useState(false);
