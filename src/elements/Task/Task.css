@@ -1,0 +1,92 @@
+.task-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+}
+
+.task-info .task-text {
+    font-size: 15px;
+}
+
+.task-info .time-record {
+    display: flex;
+    column-gap: 20px;
+}
+
+.task-info .time-record h6 {
+    font-size: 5px;
+    color: var(--ui-colors-neutral9);
+}
+
+.task-info .task-setting {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.task-info .task-type .diy,
+.task-info .task-type .template {
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.task-info .task-type .diy {
+    background-color: var(--ui-colors-primary5);
+    color: var(--ui-colors-primary9);
+}
+
+.task-info .task-type .template {
+    background-color: var(--ui-colors-info5);
+    color: var(--ui-colors-info9);
+}
+
+.task-info .task-setting-btn {
+    display: flex;
+    column-gap: 10px;
+}
+
+.task-info .task-setting-btn button {
+    font-size: 20px;
+    background-color: var(--color-none);
+    border: none;
+    color: var(--ui-colors-neutral8);
+    cursor: pointer;
+    display: flex;
+}
+
+.task-info .task-setting-btn button:disabled {
+    cursor: not-allowed;
+}
+
+.task-info .task-setting .btn-log:hover {
+    color: var(--ui-colors-warning8);
+}
+
+.task-info .task-setting .btn-work:hover {
+    color: var(--ui-colors-success8);
+}
+
+.task-info.task-setting .btn-export:hover {
+    color: var(--ui-colors-info8);
+}
+
+.task-info .task-setting .btn-delete:hover {
+    color: var(--ui-colors-danger8);
+}
+
+.task-info .task-setting .work button {
+    color: var(--ui-colors-success8)
+}
+
+.task-info .task-setting .stop .work-icon {
+    display: none;
+}
+
+.task-info .task-setting .work .stop-icon{
+    display: none;
+}

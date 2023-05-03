@@ -4,7 +4,7 @@ export default {
             text: '目录',
             collapsible: true,
             items: [
-                {text: '开始', link: ''},
+                {text: '开始', link: '/guide/'},
             ]
         },
     ],

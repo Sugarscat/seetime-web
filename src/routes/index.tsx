@@ -9,7 +9,7 @@ const Home = lazy(()=>import("../pages/home"))
 const Tasks = lazy(() => import("../components/tasks"))
 const Me = lazy(() => import("../components/me"))
 const Users = lazy(()=>import("../components/users"))
-const User = lazy(()=>import("../elements/User/User"));
+const User = lazy(()=>import("../elements/User/UsersList"));
 const UsersUpdate = lazy(()=>import("../elements/User/UsersUpdate"))
 
 const mainUrl = process.env.REACT_APP_API_URL;

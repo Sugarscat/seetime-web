@@ -1,86 +1,91 @@
-import {UserOutlined} from "@ant-design/icons";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import "./User.css"
 import {useNavigate} from "react-router-dom";
 import {connect_users} from "../../connect";
-import UserList from "./UserList";
-import cookie from "react-cookies";
-import './User.css'
+import {showModal} from "../Modal";
+import {$message} from "../Message";
 
-
-const User = ()=> {
+const User = (props:{
+    name: string,
+    identity: boolean,
+    permissions: number,
+    operate: number,
+    fun: any // 更新列表
+}) => {
     const [isLoading, setLoading] = useState(false)
-    const [isAddLoading, setAddLoading] = useState(false)
-    const [usersList, setList] = useState([])
     const navigate = useNavigate();
-    const userData = cookie.load("user_data")
-    const refreshInfo = () => {
-        connect_users("GET",setList, setLoading, navigate, "").then()
+    const url = "?id="
+
+    const isAdmin = (identity: boolean)=> {
+        if (identity)
+            return " true"
+        return ""
     }
 
-    const addUser = ()=> {
-        navigate("/users/update/add") // -1 表示添加用户
+    const deleteUser = (id: number) => {
+        return ()=> {
+            if (id === 0) {
+                $message.warning("不可删除根管理员")
+                return
+            }
+            showModal({
+                className: "user-delete-confirmation",
+                title: "删除用户",
+                children: "你确定要删除此用户吗？",
+                onConfirm: ()=>connect_users("DELETE", props.fun, setLoading, navigate, url + id).then(),
+            });
+
+        }
     }
 
-    const user = usersList.map((user: any) =>
-        <UserList key={user.id}
-                  name={user.name}
-                  identity={user.identity}
-                  permissions={user.permissions}
-                  operate={user.id}
-                  fun={setList}
-        />
-    );
-
-    useEffect(()=>{
-        setLoading(!userData.identity)
-        setAddLoading(!userData.identity)
-        if(userData.identity)
-            connect_users("GET", setList, setLoading, navigate, "").then()
-    }, [])
+    const updateUser = (id: number) => {
+        return ()=>{
+            if (id === 0) {
+                $message.warning("不可修改根管理员信息")
+                return
+            }
+            navigate('/users/update/' + id)
+        }
+    }
 
     return (
         <>
-            <div className={"users-title"}>
-                <h2>
-                    <UserOutlined className={'icon'}/>
-                    用户管理
-                </h2>
-            </div>
-            <div className={"users-operate"}>
-                <div className={"users-btn"}>
-                    <button className={"btn-refresh"}
-                            onClick={refreshInfo}
-                            disabled={isLoading}
-                    >
-                        {isLoading ? "刷新中···" : "刷新"}
-                    </button>
-                    <button className={"btn-add"}
-                            onClick={addUser}
-                            disabled={isAddLoading}
-                    >
-                        添加
-                    </button>
-                </div>
-            </div>
-            <div className={"users-list"}>
-                <table role="table">
-                    <thead role="rowgroup">
-                    <tr>
-                        <th>用户名</th>
-                        <th>身份</th>
-                        <th>权限</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody role="rowgroup">
-                    {user}
-                    </tbody>
-                </table>
-            </div>
-            <div className={"have-permission"}
-                 style={userData.identity ? {display: "none"} : {display: "inline"}}>
-                无权限
-            </div>
+            <tr>
+                <td className={"td-name"}>
+                <span className={"user-name"}>
+                    {props.name}
+                </span>
+                </td>
+                <td className={"td-identity"}>
+                <span className={"user-identity" + isAdmin(props.identity)}>
+                   {props.identity ? "管理员" : ""}
+                </span>
+                </td>
+                <td className={"td-permissions"}>
+                    <div className={"user-permissions"}>
+                        <div className={props.permissions/10000 >= 1 ? "true" : "false"}></div>
+                        <div className={props.permissions%10000/1000 >= 1 ? "true" : "false"}></div>
+                        <div className={props.permissions%10000%1000/100 >= 1 ? "true" : "false"}></div>
+                        <div className={props.permissions%10000%1000%100/10 >= 1 ? "true" : "false"}></div>
+                        <div className={props.permissions%10000%1000%100%10 >= 1 ? "true" : "false"}></div>
+                    </div>
+                </td>
+                <td className={"td-operate"}>
+                    <div className={"user-btn"}>
+                        <button className={"btn-update"}
+                                onClick={updateUser(props.operate)}
+                        >
+                            编辑
+                        </button>
+                        <button className={"btn-delete"}
+                                onClick={deleteUser(props.operate)}
+                                disabled={isLoading}
+                        >
+                            {isLoading ? "删除中···" : "删除"}
+                        </button>
+                    </div>
+                </td>
+            </tr>
         </>
     )
 }

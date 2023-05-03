@@ -6,8 +6,41 @@
     margin-right: 10px;
 }
 
-.tasks-operate {
+
+.tasks-operate .tasks-btn {
     display: flex;
+    column-gap: 20px;
+}
+
+.tasks-operate .tasks-btn button {
+    height: 40px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.tasks-operate .btn-refresh{
+    background-color: var(--ui-colors-primary6);
+    color: var(--ui-colors-primary9);
+}
+
+.tasks-operate button:disabled {
+    cursor: not-allowed;
+}
+
+.tasks-operate .btn-refresh:hover {
+    background-color: var(--ui-colors-primary7);
+}
+
+.tasks-operate .btn-add {
+    background-color: var(--ui-colors-info6);
+    color: var(--ui-colors-info9);
+}
+
+.tasks-operate .btn-add:hover {
+    background-color: var(--ui-colors-info7);
 }
 
 .tasks-info {

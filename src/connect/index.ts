@@ -7,6 +7,7 @@ const loginUrl = mainUrl + "/api/login?name="
 const meUrl = mainUrl + "/api/me"
 const usersUrl = mainUrl + "/api/users"
 const userUrl = mainUrl + "/api/user?id="
+const tasksUrl = mainUrl + "/api/tasks"
 
 const getMethod = "GET"
 const putMethod = "PUT"
@@ -73,7 +74,7 @@ export  const connect_me = async (
     formData.append('name', name);
     formData.append('pwd', pwd);
 
-    const res = await fetch(meUrl, {
+    const response = await fetch(meUrl, {
         method: putMethod,
         headers: {
             'Authorization': cookie.load("access_token"),
@@ -97,13 +98,15 @@ export  const connect_me = async (
         return
     }
 
-    if (!res.success) {
-        $message.error(res.message)
-        if (res.code === 403){
+    if (!response.success) {
+        if (response.code === 400)
+            $message.warning("没有权限")
+        else if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
     } else {
-        $message.success(res.message)
+        $message.success("修改成功")
         cookie.save("user_name", name, {path: '/'})
     }
     funL(false)
@@ -144,8 +147,10 @@ export const connect_users = async (
     }
 
     if (!response.success) {
-        $message.warning(response.message)
-        if (response.code === 403){
+        if (response.code === 400)
+            $message.warning("没有权限")
+        else if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
     } else {
@@ -191,13 +196,15 @@ export const connect_users_update = async (
     }
 
     if (!response.success) {
-        $message.warning(response.message)
         funL(true)
-        if (response.code === 403){
+        if (response.code === 400)
+            $message.warning("没有权限")
+        else if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
     } else {
-        $message.success(response.message)
+        $message.success("更新/添加成功")
         navigate('/users')
     }
     funL(false)
@@ -242,9 +249,11 @@ export const connect_user = async (
     }
 
     if (!response.success) {
-        $message.warning(response.message)
         funL(true)
-        if (response.code === 403){
+        if (response.code === 400)
+            $message.warning("没有权限")
+        else if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
     } else {
@@ -262,4 +271,50 @@ export const connect_user = async (
         fun.setCheckedState({ ...fun.checkedState, ...newState });
     }
     funL(false)
+}
+
+export const connect_tasks = async (
+    method: string, // 请求方式
+    fun: any, // 未知函数
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+) => {
+    let isCan = true
+    funL(true)
+    const response = await fetch(tasksUrl, {
+        method: method,
+        headers: {
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        funL(false)
+        if (response.code === 400)
+            $message.warning("没有权限")
+        else if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+    } else {
+        $message.success(response.message)
+        fun(response.data.content)
+        funL(false)
+    }
 }

@@ -6,5 +6,9 @@ export default [
     {
         text: '文档',
         link: '/guide/'
+    },
+    {
+        text: '下载',
+        link: '/download/'
     }
 ]

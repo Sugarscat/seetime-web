@@ -1,12 +1,3 @@
-function init(id: any){
-    const task = {
-        title: "任务",
-        info: "简介",
-        last: "2023-02-03",
-        next: "2023-54-00"
-    }
-    return task
-}
 
 function checkWork(changeStatue: any) {
     changeStatue(true)
@@ -44,4 +35,4 @@ function deleteTask(id: any) {
     }
 }
 
-export {init, changeTask, startTask, exportTask, deleteTask}
+export {changeTask, startTask, exportTask, deleteTask}
