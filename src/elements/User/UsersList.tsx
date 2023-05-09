@@ -5,14 +5,16 @@ import {connect_users} from "../../connect";
 import User from "./User";
 import cookie from "react-cookies";
 import './UsersList.css'
+import Template from "../Template/Template";
 
 
 const UsersList = ()=> {
-    const [isLoading, setLoading] = useState(false)
-    const [isAddLoading, setAddLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [addLoading, setAddLoading] = useState(false)
     const [usersList, setList] = useState([])
     const navigate = useNavigate();
     const userData = cookie.load("user_data")
+
     const refreshInfo = () => {
         connect_users("GET",setList, setLoading, navigate, "").then()
     }
@@ -40,29 +42,24 @@ const UsersList = ()=> {
 
     return (
         <>
-            <div className={"users-title"}>
-                <h2>
-                    <UserOutlined className={'icon'}/>
-                    用户管理
-                </h2>
-            </div>
-            <div className={"users-operate"}>
-                <div className={"users-btn"}>
+            <Template
+                title={<> <UserOutlined className={'icon'}/>用户管理</>}
+                operate={<><div className={"users-btn"}>
                     <button className={"btn-refresh"}
                             onClick={refreshInfo}
-                            disabled={isLoading}
+                            disabled={loading}
                     >
-                        {isLoading ? "刷新中···" : "刷新"}
+                        {loading ? "刷新中···" : "刷新"}
                     </button>
                     <button className={"btn-add"}
                             onClick={addUser}
-                            disabled={isAddLoading}
+                            disabled={addLoading}
                     >
                         添加
                     </button>
-                </div>
-            </div>
-            <div className={"users-list"}>
+                </div></>}
+            >
+                <div className={"users-list"}>
                 <table role="table">
                     <thead role="rowgroup">
                     <tr>
@@ -76,11 +73,12 @@ const UsersList = ()=> {
                     {user}
                     </tbody>
                 </table>
-            </div>
-            <div className={"have-permission"}
-                 style={userData.identity ? {display: "none"} : {display: "inline"}}>
-                无权限
-            </div>
+                </div>
+                <div className={"have-permission"}
+                     style={userData.identity ? {display: "none"} : {display: "inline"}}>
+                    无权限
+                </div>
+            </Template>
         </>
     )
 }

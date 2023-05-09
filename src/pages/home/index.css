@@ -31,6 +31,15 @@
     overflow: hidden;
 }
 
+.have-permission {
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--ui-colors-danger5);
+    color: var(--ui-colors-danger9);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 840px) {
     .wide-screen {
         display: none;

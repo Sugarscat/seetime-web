@@ -1,7 +1,7 @@
 import React from "react";
-import "./Modal.css";
 import {createRoot} from "react-dom/client";
 import {CloseOutlined} from "@ant-design/icons";
+import "./Modal.css";
 
 export interface ModalProps {
     className: string;
@@ -30,7 +30,7 @@ function Modal(props: ModalProps) {
     return (
         <div className={"modal " + className}>
             <div className="modal-title">
-                <h2>{title}</h2>
+                <span>{title}</span>
                 <button className="close-button" onClick={handleCancel}>
                     <CloseOutlined />
                 </button>

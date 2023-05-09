@@ -5,9 +5,13 @@ const mainUrl = process.env.REACT_APP_API_URL;
 
 const loginUrl = mainUrl + "/api/login?name="
 const meUrl = mainUrl + "/api/me"
+const systemUrl = mainUrl + "/api/system"
 const usersUrl = mainUrl + "/api/users"
 const userUrl = mainUrl + "/api/user?id="
 const tasksUrl = mainUrl + "/api/tasks"
+const countUrl = mainUrl + "/api/tasks/count"
+const taskUrl = mainUrl + "/api/task?id="
+const logUrl = mainUrl + "/api/task/log?id="
 
 const getMethod = "GET"
 const putMethod = "PUT"
@@ -25,7 +29,7 @@ export const connect_login = async (
     let url = loginUrl + name + "&pwd=" + pwd
     const res = await fetch(url, {
         method: getMethod,
-        headers: {"Content-Type": "application/json;charset=utf-8"},
+        headers: {"Authorization":"","Content-Type": "application/json;charset=utf-8"},
     }).then(
         response => {
             return response.json()
@@ -60,6 +64,51 @@ export const connect_login = async (
     funL(false)
 }
 
+export  const connect_system = async (
+    setSystem: any, // 是否加载
+    setIntervalTime: any,
+    seTime: any,
+    navigate: any, // 重定向
+) => {
+    let isCan = true
+
+    const response = await fetch(systemUrl, {
+        method: "GET",
+        headers: {
+            Authorization: cookie.load("access_token"),
+            Accept: 'application/json'
+        },
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        $message.warning(response.message)
+        if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+    } else {
+        setSystem(response.data)
+        seTime(response.data.time)
+        setIntervalTime(setInterval(async () => {
+            seTime(response.data.time++)
+        }, 1000))
+    }
+}
+
 export  const connect_me = async (
     name: string,
     pwd: string,
@@ -77,8 +126,8 @@ export  const connect_me = async (
     const response = await fetch(meUrl, {
         method: putMethod,
         headers: {
-            'Authorization': cookie.load("access_token"),
-            'Accept': 'application/json'
+            Authorization: cookie.load("access_token"),
+            Accept: 'application/json'
         },
         body: formData
     }).then(
@@ -99,9 +148,8 @@ export  const connect_me = async (
     }
 
     if (!response.success) {
-        if (response.code === 400)
-            $message.warning("没有权限")
-        else if (response.code === 403){
+        $message.warning(response.message)
+        if (response.code === 403){
             $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
@@ -147,9 +195,8 @@ export const connect_users = async (
     }
 
     if (!response.success) {
-        if (response.code === 400)
-            $message.warning("没有权限")
-        else if (response.code === 403){
+        $message.warning(response.message)
+        if (response.code === 403){
             $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
@@ -197,9 +244,8 @@ export const connect_users_update = async (
 
     if (!response.success) {
         funL(true)
-        if (response.code === 400)
-            $message.warning("没有权限")
-        else if (response.code === 403){
+        $message.warning(response.message)
+        if (response.code === 403){
             $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
@@ -250,9 +296,8 @@ export const connect_user = async (
 
     if (!response.success) {
         funL(true)
-        if (response.code === 400)
-            $message.warning("没有权限")
-        else if (response.code === 403){
+        $message.warning(response.message)
+        if (response.code === 403){
             $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
@@ -278,12 +323,14 @@ export const connect_tasks = async (
     fun: any, // 未知函数
     funL: any, // 是否加载
     navigate: any, // 重定向
+    url: string,
 ) => {
     let isCan = true
     funL(true)
-    const response = await fetch(tasksUrl, {
+    const response = await fetch(tasksUrl + url, {
         method: method,
         headers: {
+            ContentType: "application/json;charset=utf-8",
             Authorization: cookie.load("access_token"),
             Accept: "application/json",
         },
@@ -306,9 +353,8 @@ export const connect_tasks = async (
 
     if (!response.success) {
         funL(false)
-        if (response.code === 400)
-            $message.warning("没有权限")
-        else if (response.code === 403){
+        $message.warning(response.message)
+        if (response.code === 403){
             $message.warning("身份令牌过期，请重新登录")
             navigate('/login')
         }
@@ -317,4 +363,243 @@ export const connect_tasks = async (
         fun(response.data.content)
         funL(false)
     }
+}
+
+export const connect_tasks_add = async (
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+    body: FormData
+) => {
+    let isCan = true
+    funL(true)
+    const response = await fetch(tasksUrl, {
+        method: "POST",
+        headers: {
+            ContentType: "application/json;charset=utf-8",
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+        body: body
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        funL(false)
+        $message.warning(response.message)
+        if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+    } else {
+        navigate('/tasks')
+    }
+}
+
+export const connect_tasks_count = async (
+    fun: any, // 未知函数
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+) => {
+    let isCan = true
+    funL(true)
+    const response = await fetch(countUrl, {
+        method: getMethod,
+        headers: {
+            ContentType: "application/json;charset=utf-8",
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        funL(false)
+        if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+    } else {
+        fun(response.data)
+        funL(false)
+    }
+}
+
+export const connect_task = async (
+    id: string,
+    fun: {
+        setName: any
+        setInfo: any
+        setCycle: any
+        setCommand: any
+    },
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+) => {
+
+    let isCan = true
+    funL(isCan)
+
+    const response = await fetch(taskUrl + id, {
+        method: "GET",
+        headers: {
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        funL(true)
+        $message.warning(response.message)
+        if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+    } else {
+        fun.setName(response.data.name)
+        fun.setInfo(response.data.info)
+        fun.setCycle(response.data.cycle)
+        fun.setCommand(response.data.command)
+    }
+    funL(false)
+}
+
+export const connect_task_update = async (
+    method: string, // 请求方式
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+    id: string ,
+    body: FormData
+) => {
+
+    let isCan = true
+    funL(isCan)
+
+    const response = await fetch(taskUrl + id, {
+        method: method,
+        headers: {
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+        body: body
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        () => {
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        funL(true)
+        $message.warning(response.message)
+        if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+    } else {
+        $message.success("更新/添加成功")
+        navigate('/tasks')
+    }
+    funL(false)
+}
+
+export const connect_task_log = async (
+    seText: any,
+    funL: any, // 是否加载
+    navigate: any, // 重定向
+    id: string ,
+) => {
+
+    let isCan = true
+    funL(isCan)
+
+    const response = await fetch(logUrl+id, {
+        method: getMethod,
+        headers: {
+            Authorization: cookie.load("access_token"),
+            Accept: "application/json",
+        },
+    }).then(
+        response => {
+            return response.json()
+        }
+    ).then().catch(
+        (err) => {
+            console.log(err)
+            $message.error('连接服务器失败')
+            isCan = false
+            funL(false)
+            seText('连接服务器失败')
+        }
+    )
+
+    // 若无法连接服务器，中断函数
+    if (!isCan) {
+        return
+    }
+
+    if (!response.success) {
+        funL(true)
+        $message.warning(response.message)
+        if (response.code === 403){
+            $message.warning("身份令牌过期，请重新登录")
+            navigate('/login')
+        }
+        seText(response.message)
+    } else {
+        seText(response.data)
+    }
+    funL(false)
 }

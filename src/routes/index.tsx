@@ -6,11 +6,14 @@ import {Loading} from "../elements/Loading";
 
 const Login = lazy(()=>import("../pages/login"))
 const Home = lazy(()=>import("../pages/home"))
+const System = lazy(()=>import("../components/system"))
 const Tasks = lazy(() => import("../components/tasks"))
 const Me = lazy(() => import("../components/me"))
 const Users = lazy(()=>import("../components/users"))
-const User = lazy(()=>import("../elements/User/UsersList"));
+const UserList = lazy(()=>import("../elements/User/UsersList"));
 const UsersUpdate = lazy(()=>import("../elements/User/UsersUpdate"))
+const TasksList = lazy(()=>import("../elements/Task/TasksList"))
+const TasksUpdate = lazy(()=>import("../elements/Task/TasksUpdate"))
 
 const mainUrl = process.env.REACT_APP_API_URL;
 
@@ -29,6 +32,7 @@ const PrivateRoute = ({ element, ...rest }: PrivateRouteProps) => {
             const response = await fetch(connectUrl, {
                 method: "GET",
                 headers: {
+                    ContentType: "application/json;charset=utf-8",
                     Authorization: cookie.load("access_token"),
                     Accept: "application/json",
                 },
@@ -47,7 +51,7 @@ const PrivateRoute = ({ element, ...rest }: PrivateRouteProps) => {
     }, []);
 
     if (loading) {
-        return null; // 或者可以显示一个 loading 组件
+        return <Loading/>; // 或者可以显示一个 loading 组件
     }
 
     if (!isPass)
@@ -79,32 +83,42 @@ const routes = [
         element: <PrivateRoute element={<Home />} />,
         children: [
             {
-                path: "/",
-                element: <PrivateRoute element={<div>Home</div>} />,
+                path: "",
+                element: <System/>,
             },
             {
                 path: "tasks",
-                element: <PrivateRoute element={<Tasks />} />,
-            },
-            {
-                path: "market",
-                element: <PrivateRoute element={<div>Market</div>} />,
-            },
-            {
-                path: "me",
-                element: <PrivateRoute element={<Me />} />,
-            },
-            {
-                path: "users",
-                element: <PrivateRoute element={<Users/>} />,
+                element: <Tasks />,
                 children: [
                     {
                         path: "",
-                        element: <PrivateRoute element={<User/>} />,
+                        element: <TasksList />,
                     },
                     {
                         path: "update/:id",
-                        element: <PrivateRoute element={<UsersUpdate />} />,
+                        element: <TasksUpdate  />,
+                    },
+                ]
+            },
+            {
+                path: "market",
+                element: <div>Market</div>,
+            },
+            {
+                path: "me",
+                element: <Me />,
+            },
+            {
+                path: "users",
+                element: <Users/>,
+                children: [
+                    {
+                        path: "",
+                        element: <UserList />,
+                    },
+                    {
+                        path: "update/:id",
+                        element: <UsersUpdate />,
                     },
                 ]
             },
@@ -116,7 +130,7 @@ const Router = () => {
     const element = useRoutes(routes);
     return <>
         <Suspense fallback={
-            <div className={"H_loader"}><Loading/></div>
+            <Loading/>
         }>
             {element}
         </Suspense>

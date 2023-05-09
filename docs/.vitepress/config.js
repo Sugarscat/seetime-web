@@ -11,11 +11,11 @@ export default {
         logo: '/favicon.ico',
         sidebar: sidebar,
         editLink: {
-            pattern: 'https://github.com/Sugarscat/hi-automation/edit/master/docs/:path',
+            pattern: 'https://github.com/Sugarscat/seetime-web/edit/master/docs/:path',
             text: '在 GitHub 上编辑此页'
         },
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/Sugarscat/hi-automation'}
+            {icon: 'github', link: 'https://github.com/Sugarscat/seetime'}
         ],
         // footer: {
         //     mymessage: 'GNU GENERAL PUBLIC LICENSE V3 Licensed',

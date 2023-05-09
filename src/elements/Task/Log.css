@@ -1,0 +1,6 @@
+.log-content {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--ui-colors-neutral3);
+    color: var(--ui-colors-primary10);
+}

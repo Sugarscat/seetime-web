@@ -17,16 +17,17 @@
     display: flex;
     align-items: flex-start;
     column-gap: 20px;
+    max-width: 450px;
 }
 
-.me-operate {
+.me-input {
     width: 100%;
     max-width: 900px;
     display: flex;
     column-gap: 20px;
 }
 
-.me-operate input {
+.me-input input {
     font-size: 1rem;
     line-height: 1.5rem;
     min-height: 40px;
@@ -37,11 +38,11 @@
     background-color: var(--ui-colors-neutral3);
 }
 
-.me-operate input:hover {
+.me-input input:hover {
     background-color: var(--ui-colors-neutral4);
 }
 
-.me-operate input:focus {
+.me-input input:focus {
     outline: none;
     border: 2px solid var(--c-green);
 }
@@ -141,8 +142,12 @@
         row-gap: 20px;
     }
 
+    .me-input {
+        flex-direction: column;
+    }
+
     .me-name,
     .me-pwd {
-        width: 100%;
+        width: 99%;
     }
 }

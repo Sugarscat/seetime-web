@@ -22,7 +22,7 @@ const UsersUpdate = () => {
     const [checkedState, setCheckedState] = useState<CheckedState>({
         situation: false,
         addTask: false,
-        changeTask: false,
+        updateTask: false,
         deleteTask: false,
         downloadTask: false,
     });
@@ -158,7 +158,7 @@ const UsersUpdate = () => {
                     </label>
 
                     <label className={"permission-change-task"}>
-                        <span>修改任务</span>
+                        <span>更新任务</span>
                         <input type={"checkbox"}
                                name={"changeTask"}
                                checked={checkedState.changeTask}

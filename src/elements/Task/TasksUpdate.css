@@ -1,0 +1,84 @@
+.tasks-update {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 20px;
+}
+
+.tasks-update-title {
+    font-size: 12px;
+}
+
+.tasks-update-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.tasks-update-info span {
+    font-size: 16px;
+    display: flex;
+    color: var(--ui-colors-primary11);
+}
+
+.tasks-update-info input {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    min-height: 40px;
+    border-radius: 10px;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    border: 2px solid var(--color-none);
+    background-color: var(--ui-colors-neutral3);
+}
+
+.tasks-update-info input:hover {
+    background-color: var(--ui-colors-neutral4);
+}
+
+.tasks-update-info input:focus {
+    outline: none;
+    border: 2px solid var(--c-green);
+}
+
+.tasks-update-permission {
+    display: flex;
+    column-gap: 10px;
+    row-gap: 10px;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    flex-flow: wrap;
+}
+
+.tasks-update-operate {
+    display: flex;
+    column-gap: 20px;
+}
+
+.tasks-update-operate button {
+    height: 40px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    background-color: var(--ui-colors-neutral3);
+}
+
+.tasks-update-operate button:hover {
+    background-color: var(--ui-colors-neutral6);
+}
+
+.tasks-update-operate .btn-update-save {
+    background-color: var(--ui-colors-info6);
+    color: var(--ui-colors-info9);
+}
+
+.tasks-update-operate .btn-update-save:hover {
+    background-color: var(--ui-colors-info7);
+}
+

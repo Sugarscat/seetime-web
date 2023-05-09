@@ -1,0 +1,107 @@
+.system-info {
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: var(--shadow1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--color-background);
+}
+
+.system-info-time {
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+}
+
+.system-info-time .time-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    column-gap: 10px;
+}
+
+.system-info-time .time-title .time-icon {
+    font-size: 1.3rem;
+}
+
+.system-info-content {
+    font-size: 0.5rem;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.system-info-content span {
+    padding: 10px;
+    background-color: var(--ui-colors-success6);
+    border: 1px solid var(--ui-colors-success7);
+    color: var(--ui-colors-success10);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.system-info-content .info-arch {
+    background-color: var(--ui-colors-primary6);
+    border: 1px solid var(--ui-colors-primary7);
+    color: var(--ui-colors-primary10);
+}
+
+.system-info-time .time-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ui-colors-primary11);
+}
+
+.system-info-time .time-tip {
+    font-size: 14px;
+    color: var(--ui-colors-neutral10);
+}
+
+.system-tasks-map {
+    padding: 10px;
+}
+
+.tasks-info-map {
+    border-radius: 10px;
+    background-color: var(--color-background);
+    box-shadow: var(--shadow1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tasks-info-map span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.tasks-info-map .recharts-legend-wrapper {
+    width: 100% !important;
+}
+
+.tasks-info-map .recharts-tooltip-item {
+    height: 20px;
+}
+
+@media screen and (max-width: 540px) {
+    .system-info {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: normal;
+        padding: 10px;
+    }
+
+    .tasks-info-map {
+        flex-direction: column;
+        align-items: center;
+    }
+}

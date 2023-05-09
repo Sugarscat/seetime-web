@@ -20,7 +20,8 @@
 }
 
 .modal-title {
-    font-size: 12px;
+    font-size: 1rem;
+    font-weight: 700;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,20 +30,18 @@
 }
 
 .modal-title .close-button {
-    font-size: 15px;
-    height: 30px;
-    width: 30px;
+    font-size: 20px;
+    height: 25px;
+    width: 25px;
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--ui-colors-neutral3);
+    background-color: var(--color-none);
+    color: var(--ui-colors-neutral12);
 }
 
 .modal-title .close-button:hover {
-    background-color: var(--ui-colors-neutral6);
+    color: var(--ui-colors-neutral11);
 }
 
 .modal-content {

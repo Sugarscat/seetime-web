@@ -1,18 +1,9 @@
-.tasks-title {
-    font-size: 12px;
-}
-
-.tasks-title .icon {
-    margin-right: 10px;
-}
-
-
-.tasks-operate .tasks-btn {
+.tasks-btn {
     display: flex;
     column-gap: 20px;
 }
 
-.tasks-operate .tasks-btn button {
+.tasks-btn button {
     height: 40px;
     width: 80px;
     border: none;
@@ -21,29 +12,29 @@
     font-size: 17px;
 }
 
-.tasks-operate .btn-refresh{
+.tasks-btn .btn-refresh{
     background-color: var(--ui-colors-primary6);
     color: var(--ui-colors-primary9);
 }
 
-.tasks-operate button:disabled {
+.tasks-btn button:disabled {
     cursor: not-allowed;
 }
 
-.tasks-operate .btn-refresh:hover {
+.tasks-btn .btn-refresh:hover {
     background-color: var(--ui-colors-primary7);
 }
 
-.tasks-operate .btn-add {
+.tasks-btn .btn-add {
     background-color: var(--ui-colors-info6);
     color: var(--ui-colors-info9);
 }
 
-.tasks-operate .btn-add:hover {
+.tasks-btn .btn-add:hover {
     background-color: var(--ui-colors-info7);
 }
 
-.tasks-info {
+.tasks-list {
     display: flex;
     flex-flow: wrap;
     flex-direction: row;
@@ -52,6 +43,14 @@
     overflow: auto;
     flex-flow: wrap;
     padding: 10px;
+}
+
+.tasks-list .success {
+    background-color: var(--ui-colors-success4);
+}
+
+.tasks-list .fail {
+    background-color: var(--ui-colors-danger4);
 }
 
 @media screen and (max-width: 840px) {

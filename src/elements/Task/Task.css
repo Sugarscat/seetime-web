@@ -7,6 +7,7 @@
 
 .task-info .task-text {
     font-size: 15px;
+    height: 45px;
 }
 
 .task-info .time-record {
@@ -14,8 +15,9 @@
     column-gap: 20px;
 }
 
-.task-info .time-record h6 {
-    font-size: 5px;
+.task-info .time-record {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--ui-colors-neutral9);
 }
 

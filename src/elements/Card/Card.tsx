@@ -2,6 +2,7 @@ import React from "react";
 import "./Card.css"
 
 export interface CardProps {
+    className: string
     width: number
     title: any
     children: any;
@@ -10,7 +11,7 @@ export interface CardProps {
 export const Card = (props: CardProps) => {
   return (
       <>
-          <div className={"sugar-card"} style={{width: props.width}}>
+          <div className={"sugar-card " + props.className} style={{width: props.width}}>
               <div className={"sugar-card-header"}>
                   {props.title}
               </div>
@@ -21,5 +22,6 @@ export const Card = (props: CardProps) => {
 }
 
 Card.defaultProps = {
+    className: "",
     width: 200
 }
