@@ -1,9 +1,9 @@
 import {BarsOutlined} from "@ant-design/icons";
 import {Task} from "./Task";
 import {useEffect, useState} from "react";
-import {connect_tasks} from "../../connect";
+import {connect_tasks} from "../../../../connect";
 import {useNavigate} from "react-router-dom";
-import Template from "../../elements/Template/Template";
+import Template from "../../market/template/Template";
 import './TasksList.css'
 import cookie from "react-cookies";
 

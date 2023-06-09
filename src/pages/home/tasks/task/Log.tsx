@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {connect_task_log} from "../../connect";
-import {Loading} from "../Loading";
+import {connect_task_log} from "../../../../connect";
+import {Loading} from "../../../../elements/Loading";
 import {useNavigate} from "react-router-dom";
 import "./Log.css"
 

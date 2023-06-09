@@ -1,10 +1,10 @@
 import {EditOutlined} from "@ant-design/icons";
 import "./TaskTitle.css"
-import {connect_task, connect_tasks} from "../../connect";
+import {connect_task, connect_tasks} from "../../../../connect";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import cookie from "react-cookies";
-import {$message} from "../Message";
+import {$message} from "../../../../elements/Message";
 function TaskTitle(props: {
     id: number
     title: any;

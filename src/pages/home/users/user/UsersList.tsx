@@ -1,11 +1,11 @@
 import {UserOutlined} from "@ant-design/icons";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {connect_users} from "../../connect";
+import {connect_users} from "../../../../connect";
 import User from "./User";
 import cookie from "react-cookies";
 import './UsersList.css'
-import Template from "../Template/Template";
+import Template from "../../market/template/Template";
 
 
 const UsersList = ()=> {

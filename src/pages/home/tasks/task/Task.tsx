@@ -1,4 +1,4 @@
-import {Card} from "../Card";
+import {Card} from "../../../../elements/Card";
 import {
     CaretRightOutlined,
     DeleteOutlined,
@@ -10,11 +10,11 @@ import {useState} from "react";
 import TaskTitle from "./TaskTitle";
 import "./Task.css"
 import {useNavigate} from "react-router-dom";
-import {connect_tasks, connect_users} from "../../connect";
-import {showModal} from "../Modal";
+import {connect_tasks, connect_users} from "../../../../connect";
+import {showModal} from "../../../../elements/Modal";
 import Log from "./Log";
 import cookie from "react-cookies";
-import {$message} from "../Message";
+import {$message} from "../../../../elements/Message";
 export interface TaskCardProps {
     id: number
     name: string

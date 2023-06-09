@@ -1,9 +1,9 @@
 import {ChangeEvent, useEffect, useState} from 'react'
 import {useNavigate, useParams} from "react-router-dom";
 import './UsersUpdate.css'
-import {connect_user, connect_users_update} from "../../connect";
-import {$message} from "../Message";
-import {Loading} from "../Loading";
+import {connect_user, connect_users_update} from "../../../../connect";
+import {$message} from "../../../../elements/Message";
+import {Loading} from "../../../../elements/Loading";
 
 const UsersUpdate = () => {
     // 字符串索引签名

@@ -5,7 +5,7 @@ import {IdcardOutlined} from "@ant-design/icons";
 import {$message} from "../../../elements/Message";
 import {connect_me} from "../../../connect";
 import "./index.css"
-import Template from "../../../elements/Template/Template";
+import Template from "../market/template/Template";
 
 
 function Me() {

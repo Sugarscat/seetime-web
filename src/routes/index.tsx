@@ -10,10 +10,10 @@ const System = lazy(()=>import("../pages/home/system"))
 const Tasks = lazy(() => import("../pages/home/tasks"))
 const Me = lazy(() => import("../pages/home/me"))
 const Users = lazy(()=>import("../pages/home/users"))
-const UserList = lazy(()=>import("../elements/User/UsersList"));
-const UsersUpdate = lazy(()=>import("../elements/User/UsersUpdate"))
-const TasksList = lazy(()=>import("../elements/Task/TasksList"))
-const TasksUpdate = lazy(()=>import("../elements/Task/TasksUpdate"))
+const UserList = lazy(()=>import("../pages/home/users/user/UsersList"));
+const UsersUpdate = lazy(()=>import("../pages/home/users/user/UsersUpdate"))
+const TasksList = lazy(()=>import("../pages/home/tasks/task/TasksList"))
+const TasksUpdate = lazy(()=>import("../pages/home/tasks/task/TasksUpdate"))
 
 const mainUrl = process.env.REACT_APP_API_URL;
 

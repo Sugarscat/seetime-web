@@ -1,9 +1,9 @@
 import {useState} from "react";
 import "./User.css"
 import {useNavigate} from "react-router-dom";
-import {connect_users} from "../../connect";
-import {showModal} from "../Modal";
-import {$message} from "../Message";
+import {connect_users} from "../../../../connect";
+import {showModal} from "../../../../elements/Modal";
+import {$message} from "../../../../elements/Message";
 
 const User = (props:{
     name: string,

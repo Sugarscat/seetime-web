@@ -2,9 +2,9 @@ import {useNavigate, useParams} from "react-router-dom";
 
 import "./TasksUpdate.css"
 import {useEffect, useState} from "react";
-import {connect_task, connect_task_update, connect_tasks, connect_tasks_add} from "../../connect";
-import {Loading} from "../Loading";
-import {$message} from "../Message";
+import {connect_task, connect_task_update, connect_tasks, connect_tasks_add} from "../../../../connect";
+import {Loading} from "../../../../elements/Loading";
+import {$message} from "../../../../elements/Message";
 const TasksUpdate = () => {
   const { id } = useParams();
   const navigate = useNavigate();
