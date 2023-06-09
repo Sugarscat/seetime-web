@@ -1,9 +1,9 @@
-import {Loading} from "../../elements/Loading";
+import {Loading} from "../../../elements/Loading";
 import {Outlet} from "react-router-dom";
 import React, {Suspense} from "react";
 
 
-const Users = ()=> {
+function Users() {
 
     return (
         <>

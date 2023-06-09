@@ -1,7 +1,7 @@
 import React, {Suspense, useState} from "react";
 import {Outlet} from "react-router-dom";
-import SidebarMenu from "../../components/sidebar_menu";
-import ElHeader from "../../components/header";
+import SidebarMenu from "./sidebar_menu";
+import ElHeader from "./header";
 import './index.css'
 import {Drawer} from "../../elements/Drawer";
 import {Loading} from "../../elements/Loading";

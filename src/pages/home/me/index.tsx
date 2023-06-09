@@ -2,13 +2,13 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import cookie from "react-cookies";
 import {IdcardOutlined} from "@ant-design/icons";
-import {$message} from "../../elements/Message";
-import {connect_me} from "../../connect";
+import {$message} from "../../../elements/Message";
+import {connect_me} from "../../../connect";
 import "./index.css"
-import Template from "../../elements/Template/Template";
+import Template from "../../../elements/Template/Template";
 
 
-const Me = () => {
+function Me() {
     // 此页面需优化
     const [username, setUsername] = useState(cookie.load("user_name"))
     const [password, setPassword] = useState("")

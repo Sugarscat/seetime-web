@@ -6,10 +6,10 @@ import {Loading} from "../elements/Loading";
 
 const Login = lazy(()=>import("../pages/login"))
 const Home = lazy(()=>import("../pages/home"))
-const System = lazy(()=>import("../components/system"))
-const Tasks = lazy(() => import("../components/tasks"))
-const Me = lazy(() => import("../components/me"))
-const Users = lazy(()=>import("../components/users"))
+const System = lazy(()=>import("../pages/home/system"))
+const Tasks = lazy(() => import("../pages/home/tasks"))
+const Me = lazy(() => import("../pages/home/me"))
+const Users = lazy(()=>import("../pages/home/users"))
 const UserList = lazy(()=>import("../elements/User/UsersList"));
 const UsersUpdate = lazy(()=>import("../elements/User/UsersUpdate"))
 const TasksList = lazy(()=>import("../elements/Task/TasksList"))

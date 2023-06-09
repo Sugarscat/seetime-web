@@ -1,10 +1,10 @@
 import {CodeOutlined, FieldTimeOutlined} from "@ant-design/icons";
 import {useEffect, useState} from "react";
-import {connect_system, connect_tasks_count} from "../../connect";
+import {connect_system, connect_tasks_count} from "../../../connect";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import Template from "../../elements/Template/Template";
+import Template from "../../../elements/Template/Template";
 import {useNavigate} from "react-router-dom";
-import {Loading} from "../../elements/Loading";
+import {Loading} from "../../../elements/Loading";
 import "./index.css"
 import cookie from "react-cookies";
 
