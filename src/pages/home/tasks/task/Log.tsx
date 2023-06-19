@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {connect_task_log} from "../../../../connect";
 import {Loading} from "../../../../elements/Loading";
-import {useNavigate} from "react-router-dom";
 import "./Log.css"
 
 
@@ -14,13 +13,13 @@ function Log(props: {id: number,  navigate: any}) {
         const textArray = text.split('\n');
         return (
             <span>
-      {textArray.map((line, index) => (
-          <span key={index}>
-          {line}
-              {index !== textArray.length - 1 && <br />} {/* 最后一个元素后不添加换行 */}
-        </span>
-      ))}
-    </span>
+                {textArray.map((line, index) => (
+                    <span key={index}>
+                        {line}
+                        {index !== textArray.length - 1 && <br />} {/* 最后一个元素后不添加换行 */}
+                    </span>
+                ))}
+            </span>
         );
     }
 
