@@ -1,7 +1,7 @@
 import {$message} from "../elements/Message";
 import cookie from "react-cookies";
 
-const mainUrl = process.env.REACT_APP_API_URL;
+const mainUrl = process.env.REACT_APP_API_URL || location.hostname;
 
 const loginUrl = mainUrl + "/api/login"
 const meUrl = mainUrl + "/api/me"

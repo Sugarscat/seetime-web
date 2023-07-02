@@ -3,7 +3,6 @@ import {connect_task_log} from "../../../../connect";
 import {Loading} from "../../../../elements/Loading";
 import "./Log.css"
 
-
 function Log(props: {id: number,  navigate: any}) {
     const [text, seText] = useState("")
     const [loading, setLoading] = useState(false)
