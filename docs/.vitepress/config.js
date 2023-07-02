@@ -2,7 +2,7 @@ import navbar from './nav/navbar'
 import sidebar from './nav/sidebar'
 
 export default {
-    base: '/seetime',
+    base: '/seetime-web',
     lang: 'zh-CN',
     title: '见时',
     description: '定时执行自动化任务的平台。',
